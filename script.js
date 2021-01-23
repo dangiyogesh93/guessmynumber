@@ -2,8 +2,10 @@
 // document.querySelector('#scoreObtained').textContent = 50;
 
 const secretNumber = Math.floor(Math.random() * 20 + 1);
+let score = 20;
+let highScore = 0;
 
-document.querySelector('#btn').addEventListener('click', function () {
+document.querySelector('.btn').addEventListener('click', function () {
   const userNumber = Number(document.querySelector('#guess').value);
 
   if (!userNumber) {
@@ -12,12 +14,27 @@ document.querySelector('#btn').addEventListener('click', function () {
   } else if (userNumber === secretNumber) {
     document.querySelector('#message').textContent =
       'Congratulation!!!You Guessed it Right';
-    document.querySelector('#message').style.color = 'green';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('#message').style.color = 'yellow';
     document.querySelector('#secretNumber').textContent = secretNumber;
+    document.querySelector('#scoreObtained').style.color = 'green';
+    score++;
+    highScore = score;
+    document.querySelector('#scoreObtained').textContent = score;
+    document.querySelector('#highscore').textContent = highScore;
   } else {
-    document.querySelector('#message').textContent =
-      'You Guessed it wrong sorry';
-    document.querySelector('#message').style.color = 'red';
-    document.querySelector('#secretNumber').textContent = secretNumber;
+    if (score > 1) {
+      if (userNumber > secretNumber) {
+        document.querySelector('#message').textContent = 'You Guessed too high';
+      }
+      if (userNumber < secretNumber) {
+        document.querySelector('#message').textContent = 'You Guessed too low';
+      }
+      score--;
+      document.querySelector('#scoreObtained').textContent = score;
+    } else {
+      document.querySelector('#message').textContent =
+        'You Lose the Game!!! Play  Again';
+    }
   }
 });

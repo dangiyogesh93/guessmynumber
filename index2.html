@@ -12,14 +12,12 @@
     </header>
     <section id="content">
       <main id="guessbox">
-        <input type="number" name="inputbox" id="guess" />
-        <button id="btn" for="guess">Check</button>
         <label for="inputbox">Enter any number between 1 to 20</label>
+        <input type="number" name="inputbox" id="guess" />
+        <button class="btn" for="guess">Check</button>
       </main>
       <main id="progress">
-        <label for="display" id= "secretNumber">
-          ?
-        </label>
+        <label for="display" id="secretNumber"> ? </label>
         <p id="message">Start Guessing....</p>
         <label for="score" id="score">Score:-</label>
         <label for="score" id="scoreObtained">20</label>
@@ -28,6 +26,9 @@
           <label for="highscore" id="highscore">0</label>
         </div>
       </main>
+    </section>
+    <section>
+      <button class="btn again" for="guess">Play Again</button>
     </section>
 
     <script src="script.js"></script>
